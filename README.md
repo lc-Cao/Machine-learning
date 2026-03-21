@@ -8,7 +8,7 @@
 
 ### 1. 克隆项目
 ```bash
-git clone <你的仓库地址>
+git clone <https://github.com/liqingchao456789-ui/ML-4_project>
 cd ML-4_project
 ```
 
