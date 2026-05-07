@@ -6,7 +6,7 @@ import os
 plt.rcParams['font.sans-serif'] = ['Arial Unicode MS', 'SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
-# 保存 moedls
+# 保存 models
 def save_models(model,save_path = "models/my_model.pkl"):
     import pickle
     os.makedirs('models', exist_ok=True)

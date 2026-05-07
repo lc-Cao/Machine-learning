@@ -1,6 +1,6 @@
 import numpy as np
 from config import Config
-from data.make_data import X,Y,X_train,Y_train,mini_batch_n,X_test,Y_test,X_train_full,Y_train_full
+from data.make_data import X,Y,X_train,Y_train,mini_batch_n,X_test,Y_test,X_train_full,Y_train_full,X_train_scaled
 
 np.random.seed(Config.SEED)   
 
@@ -8,7 +8,8 @@ np.random.seed(Config.SEED)
 # 自己的模型
 from src.model import Logistic_Regression
 
-my_model = Logistic_Regression(Config.N_FEATURES) 
+n_features = X_train.shape[2] 
+my_model = Logistic_Regression(n_features)
 Epoches = Config.EPOCH                                                  # 训练轮次
 print_size = Epoches // Config.PRINT_SIZE                               # 打印次数
 Loss = [[] for _ in range(2)]                                           # 记录损失
@@ -49,7 +50,7 @@ sk_model = LogisticRegression(
     max_iter = Config.EPOCH                                             # 训练轮次
 )
   # 训练
-sk_model.fit(X_train_full, Y_train_full.ravel())   
+sk_model.fit(X_train_scaled, Y_train_full.ravel())   
   # 测试
 sk_y_pred = sk_model.predict(X_test)
 

@@ -14,7 +14,7 @@ cd ML-4_project
 
 ### 2. 创建虚拟环境
 ```bash
-python3 -m venv .venv
+python3 -m venv .venv      #Windows输入python -m venv .venv
 source .venv/bin/activate  # Mac/Linux
 # 或
 .venv\Scripts\activate     # Windows
