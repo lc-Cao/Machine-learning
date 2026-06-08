@@ -42,7 +42,7 @@ my_y_pred = my_model.predict(X_test)
 my_y_proba = my_model.predict_proba(X_test)
 
 # 保存数据
-from utils_multiclass import save_predictions_multiclass, save_learning_curve_multiclass, save_models_multiclass
+from src.utils_multiclass import save_predictions_multiclass, save_learning_curve_multiclass, save_models_multiclass
 save_models_multiclass(my_model)
 save_predictions_multiclass(Y_test, my_y_pred, my_y_proba)
 save_learning_curve_multiclass(Loss[0], Loss[1])
@@ -53,10 +53,12 @@ from sklearn.linear_model import LogisticRegression
 # 注意：需要重新获取完整的训练数据，因为Y_train_full在make_data_multiclass中没有导出
 # 我们将从data模块重新导入
 from data.make_data_multiclass import X_train_scaled, Y_train_full
+
+# 使用正确的参数名，sklearn 1.8.0版本中multi_class参数可能已改名或移除
+# 尝试使用默认参数
 sk_model = LogisticRegression(
     random_state=Config.SEED,                                         # 随机种子
     max_iter=Config.EPOCH,                                            # 训练轮次
-    multi_class='multinomial',                                        # 多分类使用multinomial
     solver='lbfgs'                                                    # lbfgs适用于多分类
 )
 # 训练
@@ -66,7 +68,7 @@ sk_y_pred = sk_model.predict(X_test)
 sk_y_proba = sk_model.predict_proba(X_test)
 
 # 模型评估
-from utils_multiclass import evaluate_multiclass, plot_loss_curve_multiclass, plot_decision_boundary_multiclass
+from src.utils_multiclass import evaluate_multiclass, plot_loss_curve_multiclass, plot_decision_boundary_multiclass
 
 print("\n" + "=" * 60)
 print("自己模型 (多分类)")
@@ -90,7 +92,7 @@ except Exception as e:
 # 将sklearn预测结果也保存下来
 print("\n" + "=" * 60)
 print("保存sklearn模型的预测结果...")
-from utils_multiclass import save_predictions_multiclass as save_sk_predictions
+from src.utils_multiclass import save_predictions_multiclass as save_sk_predictions
 save_sk_predictions(Y_test, sk_y_pred, sk_y_proba, "results/Predictions_sklearn_multiclass.csv")
 
 print("\n" + "=" * 60)

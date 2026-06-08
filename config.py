@@ -11,3 +11,7 @@ class Config:
     EPOCH = 150             # 训练轮次 (增加到150轮，因为样本更多)
     LEARNING_RATE = 0.01    # 学习率
     PRINT_SIZE = 15         # 损失曲线的点数 (每10轮打印一次)
+
+    # 正则化参数
+    REG_TYPE = 'l2'         # 正则化类型: 'none' / 'l1' / 'l2'
+    REG_LAMBDA = 0.0001     # 正则化系数 λ (L2 最佳值，L1 建议 0.01)

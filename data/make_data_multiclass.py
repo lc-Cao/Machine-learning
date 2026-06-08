@@ -95,3 +95,12 @@ print(f"原始样本数: {len(data.data)}, 采样样本数: {len(X)}")
 print(f"训练分块形状 X: {X_train.shape}") # (Batch_N, Batch_Size, Features)
 print(f"训练分块形状 Y (整数标签): {Y_train.shape}") # (Batch_N, Batch_Size)
 print(f"训练分块形状 Y (one-hot): {Y_train_onehot.shape}") # (Batch_N, Batch_Size, 3)
+
+# 导出所有需要的变量
+__all__ = ['X_train', 'Y_train', 'Y_train_onehot', 'mini_batch_n', 'X_test', 'Y_test', 
+           'X_train_scaled', 'Y_train_full', 'X_train_truncated', 'Y_train_truncated']
+
+# 确保变量可以被正确导入
+if __name__ != "__main__":
+    # 当作为模块导入时，确保这些变量可用
+    pass
